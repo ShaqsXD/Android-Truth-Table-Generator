@@ -1,0 +1,266 @@
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity" 
+    android:fillViewport="true"   >
+
+	<LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:background="#696969" >
+ 
+
+    	<!--Expression Row-->
+		<LinearLayout
+    		android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="10dp"
+    		android:layout_marginLeft="2dp"	
+    		android:layout_marginRight="2dp" >
+    
+        	<EditText
+            	android:id="@+id/textExpression"
+            	android:layout_width="0dp"
+            	android:layout_height="wrap_content"
+            	android:text="@string/expression"
+				android:clickable="false" 
+       			android:cursorVisible="false" 
+        		android:focusable="false" 
+        		android:inputType="textMultiLine"
+        		android:textColor="@android:color/white"
+        		android:focusableInTouchMode="false"
+            	android:layout_weight="1" />
+    	    		
+    		<Button
+        		android:id="@+id/buttonBksp"
+        		android:onClick="buttonBksp"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="Backspace"
+        		android:textColor="@android:color/white"
+        		android:textSize="12sp" />
+    	
+    	</LinearLayout>
+
+		<!--Variables Row-->
+		<LinearLayout
+    		android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="18dp"
+    		android:layout_marginLeft="2dp"	
+    		android:layout_marginRight="2dp" >
+    
+    		<Button
+        		android:id="@+id/buttonA"
+        		android:onClick="buttonA"
+        		android:layout_width="0dp"
+        		android:layout_height="60dp"
+        		android:layout_weight="1"
+        		android:text="A"
+        		android:textColor="@android:color/white" />
+
+    		<Button
+        		android:id="@+id/buttonB"
+        		android:onClick="buttonB"
+        		android:layout_width="0dp"
+        		android:layout_height="60dp"
+        		android:layout_weight="1"
+        		android:text="B"
+        		android:textColor="@android:color/white" />
+
+    		<Button
+        		android:id="@+id/buttonC"
+        		android:onClick="buttonC"
+        		android:layout_width="0dp"
+        		android:layout_height="60dp"
+        		android:layout_weight="1"
+        		android:text="C"
+        		android:textColor="@android:color/white" />
+
+    		<Button
+        		android:id="@+id/buttonD"
+        		android:onClick="buttonD"
+        		android:layout_width="0dp"
+        		android:layout_height="60dp"
+        		android:layout_weight="1"
+        		android:text="D"
+        		android:textColor="@android:color/white" />
+    		
+		</LinearLayout>
+		
+		<!--Variable Compliments Row-->
+		<LinearLayout
+    		android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="2dp"	
+    		android:layout_marginRight="2dp" >
+    
+    		<Button
+        		android:id="@+id/buttonANot"
+        		android:onClick="buttonANot"
+        		android:layout_width="0dp"
+        		android:layout_height="60dp"
+        		android:layout_weight="1"
+        		android:text="A'"
+        		android:textColor="@android:color/white" />
+
+    		<Button
+        		android:id="@+id/buttonBNot"
+        		android:onClick="buttonBNot"
+        		android:layout_width="0dp"
+        		android:layout_height="60dp"
+        		android:layout_weight="1"
+        		android:text="B'"
+        		android:textColor="@android:color/white" />
+
+    		<Button
+        		android:id="@+id/buttonCNot"
+        		android:onClick="buttonCNot"
+        		android:layout_width="0dp"
+        		android:layout_height="60dp"
+        		android:layout_weight="1"
+        		android:text="C'"
+        		android:textColor="@android:color/white" />
+
+    		<Button
+        		android:id="@+id/buttonDNot"
+        		android:onClick="buttonDNot"
+        		android:layout_width="0dp"
+        		android:layout_height="60dp"
+        		android:layout_weight="1"
+        		android:text="D'"
+        		android:textColor="@android:color/white" />
+    		
+		</LinearLayout>
+
+		<!--Operators Row-->
+		<LinearLayout
+    		android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="18dp"
+    		android:layout_marginLeft="2dp"	
+    		android:layout_marginRight="2dp" >
+
+			<Button
+    			android:id="@+id/buttonAnd"
+    			android:layout_width="0dp"
+    			android:layout_height="60dp"
+    			android:onClick="buttonAnd"
+    			android:layout_weight="1"
+    			android:text="AND"
+    			android:textColor="#696969"
+    			android:clickable = "false" />
+		
+			<Button
+    			android:id="@+id/buttonOr"
+    			android:layout_width="0dp"
+    			android:layout_height="60dp"
+    			android:layout_weight="1"
+    			android:onClick="buttonOr"
+    			android:text="OR"
+    			android:textColor="#696969"
+    			android:clickable = "false" />
+		
+			<Button
+			    android:id="@+id/buttonXor"
+			    android:layout_width="0dp"
+			    android:layout_height="60dp"
+			    android:onClick="buttonXor"
+			    android:layout_weight="1"
+			    android:text="XOR"
+			    android:textColor="#696969"
+			    android:clickable = "false" />
+			
+		</LinearLayout>
+
+		<!--Compliment Operators Row-->
+		<LinearLayout
+    		android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="2dp"	
+    		android:layout_marginRight="2dp" >
+
+			<Button
+    			android:id="@+id/buttonNand"
+    			android:layout_width="0dp"
+    			android:layout_height="60dp"
+    			android:onClick="buttonNand"
+    			android:layout_weight="1"
+    			android:text="NAND"
+    			android:textColor="#696969"
+    			android:clickable = "false" />
+		
+			<Button
+    			android:id="@+id/buttonNor"
+    			android:layout_width="0dp"
+    			android:layout_height="60dp"
+    			android:onClick="buttonNor"
+    			android:layout_weight="1"
+    			android:text="NOR"
+    			android:textColor="#696969"
+    			android:clickable = "false" />
+		
+			<Button
+    			android:id="@+id/buttonXnor"
+    			android:layout_width="0dp"
+    			android:layout_height="60dp"
+    			android:onClick="buttonXnor"
+    			android:layout_weight="1"
+    			android:text="XNOR"
+    			android:textColor="#696969"
+    			android:clickable = "false" />
+		</LinearLayout>
+		
+		<LinearLayout
+    		android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="2dp"	
+    		android:layout_marginRight="2dp"
+    		android:layout_marginTop="18dp" >
+
+			<Button
+    			android:id="@+id/buttonLBracket"
+    			android:layout_width="0dp"
+    			android:layout_height="60dp"
+    			android:onClick="buttonLBracket"
+    			android:layout_weight="1"
+    			android:text="("
+    			android:textColor="@android:color/white" />
+		
+			<Button
+    			android:id="@+id/buttonRBracket"
+    			android:layout_width="0dp"
+    			android:layout_height="60dp"
+    			android:onClick="buttonRBracket"
+    			android:layout_weight="1"
+    			android:text=")"
+    			android:textColor="#696969"
+    			android:clickable = "false" />
+		
+		</LinearLayout>
+		
+		<LinearLayout
+    		android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginTop="18dp"
+    		android:layout_marginLeft="2dp"	
+    		android:layout_marginRight="2dp" >
+
+			<Button
+    			android:id="@+id/buttonEnter"
+    			android:layout_width="0dp"
+    			android:layout_height="70dp"
+    			android:layout_weight="1"
+    			android:text="Enter"
+    			android:onClick="buttonEnter"
+    			android:textColor="#696969"
+    			android:clickable = "false"	 />
+
+		</LinearLayout>
+
+	</LinearLayout>
+	
+</ScrollView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Truth Table Generator</string>
+    <string name="action_settings">Settings</string>
+    <string name="expression"></string>
+    <string name="title_activity_truth_table">Truth Table</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

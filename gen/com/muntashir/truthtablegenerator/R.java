@@ -24,6 +24,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int TableLayout=0x7f080013;
         public static final int buttonA=0x7f080002;
         public static final int buttonANot=0x7f080006;
         public static final int buttonAnd=0x7f08000a;
@@ -42,6 +43,9 @@ public final class R {
         public static final int buttonRBracket=0x7f080011;
         public static final int buttonXnor=0x7f08000f;
         public static final int buttonXor=0x7f08000c;
+        public static final int editText1=0x7f080016;
+        public static final int tableRow1=0x7f080014;
+        public static final int tableRow2=0x7f080015;
         public static final int textExpression=0x7f080000;
     }
     public static final class layout {

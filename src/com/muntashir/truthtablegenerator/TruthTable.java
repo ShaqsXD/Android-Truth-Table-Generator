@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.EditText;
 
 public class TruthTable extends Activity {
 
@@ -20,9 +20,36 @@ public class TruthTable extends Activity {
 		setupActionBar();
 		
 		Intent intent = getIntent();
+		Expressions expressions = new Expressions();
 		ArrayList<String> expression = intent.getStringArrayListExtra("expression");
 		
-
+		expressions.getVar(expression);
+		
+		EditText editText = (EditText)findViewById(R.id.editText1);
+		
+		boolean firstVarVal = false;
+		boolean secondVarVal = false;
+		boolean thirdVarVal = false;
+		boolean fourthVarVal = false;
+		
+		for (int i = 0; i < Math.pow(2, expressions.numVar); i++)
+		{
+			if ((i + 1) % 2 == 0)
+			{
+				firstVarVal = true;
+			}
+			else
+			{
+				firstVarVal = false;
+				if (i > 0)
+				{
+					secondVarVal = !secondVarVal;
+				}
+			}
+			//editText.append(firstVarVal + " " + secondVarVal + "\n");	
+		}
+		
+		
 	}
 
 	/**

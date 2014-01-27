@@ -4,6 +4,96 @@ import java.util.ArrayList;
 
 public class Expressions {
 
+	public boolean varA = false;
+	public boolean varB = false;
+	public boolean varC = false;
+	public boolean varD = false;
+	public String firstVar = null;
+	public String secondVar = null;
+	public String thirdVar = null;
+	public String fourthVar = null;
+	public int numVar = 0;
+	
+    public void getVar(ArrayList<String> input)
+    {
+    	
+    	firstVar = "";
+    	for (String term : input)
+    	{
+    		firstVar+= term + " ";
+    	}
+    	
+    	
+    	for (String term : input)
+    	{
+    		if (term.equals("A"))
+    		{
+    			varA = true;
+    		}
+    		else if (term.equals("B"))
+    		{
+    			varB = true;
+    		}
+    		else if (term.equals("C"))
+    		{
+    			varC = true;
+    		}
+    		else if (term.equals("D"))
+    		{
+    			varD = true;
+    		}
+    	}
+    	
+  	if (varA == true)
+		{
+			numVar++;
+			firstVar = "A";
+		}
+		if (varB == true)
+		{
+			numVar++;
+			
+			if (firstVar == null)
+				firstVar = "B";
+			else
+				secondVar = "B";
+		}
+		if (varC == true)
+		{
+			numVar++;
+			
+			if (secondVar == null)
+			{
+				if (firstVar == null)
+					firstVar = "C";
+				else
+					secondVar = "C";
+			}
+			else
+				thirdVar = "C";
+		}
+		if (varD == true)
+		{
+			numVar++;
+
+			if (thirdVar == null)
+			{
+				if (secondVar == null)
+				{
+					if (firstVar == null)
+						firstVar = "D";
+					else
+						secondVar = "D";
+				}
+				else
+					thirdVar = "D";
+			}
+			else
+				fourthVar = "D";
+		}   	
+		
+    }
+
     public ArrayList<String> parse(ArrayList<String> input)
     {
     	for (int i = 0; i < input.size(); i++)

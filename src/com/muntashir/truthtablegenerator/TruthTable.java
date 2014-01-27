@@ -2,6 +2,9 @@ package com.muntashir.truthtablegenerator;
 
 import java.util.ArrayList;
 
+import com.muntashir.truthtablegenerator.jeval.EvaluationException;
+import com.muntashir.truthtablegenerator.jeval.Evaluator;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +30,10 @@ public class TruthTable extends Activity {
 		
 		EditText editText = (EditText)findViewById(R.id.editText1);
 		
+		String boolExpression = "";
+		
+
+    	
 		boolean firstVarVal = false;
 		boolean secondVarVal = false;
 		boolean thirdVarVal = false;
@@ -46,7 +53,61 @@ public class TruthTable extends Activity {
 					secondVarVal = !secondVarVal;
 				}
 			}
-			//editText.append(firstVarVal + " " + secondVarVal + "\n");	
+			
+	    	for (String term : expression)
+	    	{
+	    		if (term.equals(expressions.firstVar) || term.equals("!!" + expressions.firstVar))
+	    		{
+	    			boolExpression += firstVarVal;
+	    		}
+	    		else if (term.equals(expressions.secondVar) || term.equals("!!" + expressions.secondVar))
+	    		{
+	    			boolExpression += secondVarVal;
+	    		}
+	    		else if (term.equals(expressions.thirdVar) || term.equals("!!" + expressions.thirdVar))
+	    		{
+		    		boolExpression += thirdVarVal;
+		    	}
+	    		else if (term.equals(expressions.fourthVar) || term.equals("!!" + expressions.fourthVar))
+	    	    {
+	    	    	boolExpression += fourthVarVal;
+	    	    }
+	    		else if (term.equals("!" + expressions.firstVar))
+	    		{
+	    			boolExpression += !firstVarVal;
+	    		}
+	    		else if (term.equals("!" + expressions.secondVar))
+	    		{
+	    			boolExpression += !secondVarVal;
+	    		}
+	    		else if (term.equals("!" + expressions.thirdVar))
+	    		{
+		    		boolExpression += !thirdVarVal;
+		    	}
+	    		else if (term.equals("!" + expressions.fourthVar))
+	    	    {
+	    	    	boolExpression += !fourthVarVal;
+	    	    }
+	    		else
+	    		{
+	    		boolExpression += term;
+	    		};
+	    	}
+	    	
+	    		    				
+	    	Evaluator evaluator = new Evaluator();
+	    	
+	    	boolean result = false;
+			try {
+				result = evaluator.getBooleanResult(evaluator.evaluate(boolExpression));
+			} catch (EvaluationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			editText.append(boolExpression + "\n");	
+	        editText.append(firstVarVal + " + " + secondVarVal + " => " + result + "\n");	
+	        
+	        boolExpression = "";
 		}
 		
 		

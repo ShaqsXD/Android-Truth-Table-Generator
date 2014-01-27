@@ -15,30 +15,23 @@ public class Expressions {
 	public int numVar = 0;
 	
     public void getVar(ArrayList<String> input)
-    {
-    	
-    	firstVar = "";
-    	for (String term : input)
-    	{
-    		firstVar+= term + " ";
-    	}
-    	
+    {  	
     	
     	for (String term : input)
     	{
-    		if (term.equals("A"))
+    		if (term.equals("A") || term.equals("!A"))
     		{
     			varA = true;
     		}
-    		else if (term.equals("B"))
+    		else if (term.equals("B") || term.equals("!B"))
     		{
     			varB = true;
     		}
-    		else if (term.equals("C"))
+    		else if (term.equals("C") || term.equals("!C"))
     		{
     			varC = true;
     		}
-    		else if (term.equals("D"))
+    		else if (term.equals("D") || term.equals("!D"))
     		{
     			varD = true;
     		}

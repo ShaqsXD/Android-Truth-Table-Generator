@@ -1,10 +1,14 @@
 package com.muntashir.truthtablegenerator;
 
-import android.os.Bundle;
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
+import android.widget.Toast;
 
 public class TruthTable extends Activity {
 
@@ -14,6 +18,11 @@ public class TruthTable extends Activity {
 		setContentView(R.layout.activity_truth_table);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		Intent intent = getIntent();
+		ArrayList<String> expression = intent.getStringArrayListExtra("expression");
+		
+
 	}
 
 	/**

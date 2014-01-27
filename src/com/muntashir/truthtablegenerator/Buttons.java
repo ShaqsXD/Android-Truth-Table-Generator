@@ -9,9 +9,45 @@ public class Buttons {
 	public boolean variablesDisabled = false;
 	Activity activity = new Activity();
 	
+	protected Button AND;
+	protected Button OR;
+	protected Button XOR;
+	protected Button NAND;
+	protected Button NOR;
+	protected Button XNOR;
+	protected Button A;
+	protected Button B;
+	protected Button C;
+	protected Button D;
+	protected Button ANot;
+	protected Button BNot;
+	protected Button CNot;
+	protected Button DNot;
+	protected Button Enter;
+	protected Button LBracket;
+	protected Button RBracket;
+	
 	public Buttons(Activity activity)
 	{
-		this.activity = activity;
+		this.activity = activity;	
+		
+		AND = (Button)this.activity.findViewById(R.id.buttonAnd);
+		OR = (Button)this.activity.findViewById(R.id.buttonOr);
+		XOR = (Button)this.activity.findViewById(R.id.buttonXor);
+		NAND = (Button)this.activity.findViewById(R.id.buttonNand);
+		NOR = (Button)this.activity.findViewById(R.id.buttonNor);
+		XNOR = (Button)this.activity.findViewById(R.id.buttonXnor);
+		A = (Button)this.activity.findViewById(R.id.buttonA);
+		B = (Button)this.activity.findViewById(R.id.buttonB);
+		C = (Button)this.activity.findViewById(R.id.buttonC);
+		D = (Button)this.activity.findViewById(R.id.buttonD);
+		ANot = (Button)this.activity.findViewById(R.id.buttonANot);
+		BNot = (Button)this.activity.findViewById(R.id.buttonBNot);
+		CNot = (Button)this.activity.findViewById(R.id.buttonCNot);
+		DNot = (Button)this.activity.findViewById(R.id.buttonDNot);
+		Enter = (Button)this.activity.findViewById(R.id.buttonEnter);
+		LBracket = (Button)this.activity.findViewById(R.id.buttonLBracket);
+		RBracket = (Button)this.activity.findViewById(R.id.buttonRBracket);
 	}
 	
 	protected void enableButton(Button button)
@@ -28,13 +64,6 @@ public class Buttons {
 	
 	public void enableOperators()
 	    {
-	    	Button AND = (Button)this.activity.findViewById(R.id.buttonAnd);
-	    	Button OR = (Button)this.activity.findViewById(R.id.buttonOr);
-	    	Button XOR = (Button)this.activity.findViewById(R.id.buttonXor);
-	    	Button NAND = (Button)this.activity.findViewById(R.id.buttonNand);
-	    	Button NOR = (Button)this.activity.findViewById(R.id.buttonNor);
-	    	Button XNOR = (Button)this.activity.findViewById(R.id.buttonXnor);
-
 	    	enableButton(AND);
 	    	enableButton(OR);
 	    	enableButton(XOR);
@@ -45,13 +74,6 @@ public class Buttons {
 	    
 	    public void disableOperators()
 	    {
-	    	Button AND = (Button)this.activity.findViewById(R.id.buttonAnd);
-	    	Button OR = (Button)this.activity.findViewById(R.id.buttonOr);
-	    	Button XOR = (Button)this.activity.findViewById(R.id.buttonXor);
-	    	Button NAND = (Button)this.activity.findViewById(R.id.buttonNand);
-	    	Button NOR = (Button)this.activity.findViewById(R.id.buttonNor);
-	    	Button XNOR = (Button)this.activity.findViewById(R.id.buttonXnor);
-	    	
 	    	disableButton(AND);
 	    	disableButton(OR);
 	    	disableButton(XOR);
@@ -62,15 +84,6 @@ public class Buttons {
 	    
 	    public void disableVariables()
 	    {
-	    	Button A = (Button)this.activity.findViewById(R.id.buttonA);
-	    	Button B = (Button)this.activity.findViewById(R.id.buttonB);
-	    	Button C = (Button)this.activity.findViewById(R.id.buttonC);
-	    	Button D = (Button)this.activity.findViewById(R.id.buttonD);
-	    	Button ANot = (Button)this.activity.findViewById(R.id.buttonANot);
-	    	Button BNot = (Button)this.activity.findViewById(R.id.buttonBNot);
-	    	Button CNot = (Button)this.activity.findViewById(R.id.buttonCNot);
-	    	Button DNot = (Button)this.activity.findViewById(R.id.buttonDNot);
-	    	
 	    	disableButton(A);
 	    	disableButton(B);
 	    	disableButton(C);
@@ -84,16 +97,7 @@ public class Buttons {
 	    }
 	    
 	    public void enableVariables()
-	    {
-	    	Button A = (Button)this.activity.findViewById(R.id.buttonA);
-	    	Button B = (Button)this.activity.findViewById(R.id.buttonB);
-	    	Button C = (Button)this.activity.findViewById(R.id.buttonC);
-	    	Button D = (Button)this.activity.findViewById(R.id.buttonD);
-	    	Button ANot = (Button)this.activity.findViewById(R.id.buttonANot);
-	    	Button BNot = (Button)this.activity.findViewById(R.id.buttonBNot);
-	    	Button CNot = (Button)this.activity.findViewById(R.id.buttonCNot);
-	    	Button DNot = (Button)this.activity.findViewById(R.id.buttonDNot);
-	    	
+	    {   	
 	    	enableButton(A);
 	    	enableButton(B);
 	    	enableButton(C);
@@ -107,44 +111,32 @@ public class Buttons {
 	    }
 	    
 	    public void enableEnter()
-	    {
-	    	Button enter = (Button)this.activity.findViewById(R.id.buttonEnter);
-	    	
-	    	enableButton(enter);
+	    {	    	
+	    	enableButton(Enter);
 	    }
 	    
 	    public void disableEnter()
 	    {
-	    	Button enter = (Button)this.activity.findViewById(R.id.buttonEnter);
-	    	
-	    	disableButton(enter);
+	    	disableButton(Enter);
 	    }
 	    
 	    public void disableLBracket()
 	    {
-	    	Button LBracket = (Button)this.activity.findViewById(R.id.buttonLBracket);
-	    	
 	    	disableButton(LBracket);
 	    }
 	    
 	    public void enableLBracket()
 	    {
-	    	Button LBracket = (Button)this.activity.findViewById(R.id.buttonLBracket);
-	    	
 	    	enableButton(LBracket);
 	    }
 	    
 	    public void disableRBracket()
-	    {
-	    	Button RBracket = (Button)this.activity.findViewById(R.id.buttonRBracket);
-	    	
+	    {  	
 	    	disableButton(RBracket);
 	    }
 	    
 	    public void enableRBracket()
 	    {
-	    	Button RBracket = (Button)this.activity.findViewById(R.id.buttonRBracket);
-	    	
 	    	enableButton(RBracket);
 	    }
 }

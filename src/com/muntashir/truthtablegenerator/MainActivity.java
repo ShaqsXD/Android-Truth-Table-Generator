@@ -11,19 +11,27 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity {
 	
-	int emptyBracket = 0;
-	boolean variableEntered = false;
+	protected Buttons buttons;
+	
+	protected int emptyBracket = 0;
+	protected boolean variableEntered = false;
+	
 	ArrayList<String> expression = new ArrayList<String>();
+	
+	EditText editText;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        buttons = new Buttons(this);
+        editText = (EditText)findViewById(R.id.textExpression);
     }
     
     public void variablePress()
     {
-    	Buttons buttons = new Buttons(this);
+    	
     	buttons.enableOperators();
     	buttons.disableVariables();
     	buttons.enableEnter();
@@ -38,7 +46,7 @@ public class MainActivity extends Activity {
     
     public void operatorPress()
     {
-    	Buttons buttons = new Buttons(this);
+    	
 
     	buttons.enableLBracket();
     	buttons.disableOperators();
@@ -49,7 +57,7 @@ public class MainActivity extends Activity {
     
     public void writeExpressionToText()
     {
-    	EditText editText = (EditText)findViewById(R.id.textExpression);
+    	
     	
     	editText.setText("");
 		
@@ -61,7 +69,7 @@ public class MainActivity extends Activity {
     
     public void buttonBksp(View view)
     {    	
-    	Buttons buttons = new Buttons(this);
+    	
     	//String term = expression.get(expression.size() - 1);  	
     	
     	buttons.enableOperators();
@@ -209,7 +217,7 @@ public class MainActivity extends Activity {
     	
     	writeExpressionToText();    	
     	
-    	Buttons buttons = new Buttons(this);
+    	
     	
     	emptyBracket++;
     	
@@ -223,7 +231,7 @@ public class MainActivity extends Activity {
     	
     	writeExpressionToText();
     	
-    	Buttons buttons = new Buttons(this);
+    	
     	
     	if (buttons.variablesDisabled)
     	{
@@ -240,95 +248,18 @@ public class MainActivity extends Activity {
     public void buttonEnter(View view)
     {	
     	Intent intent = new Intent(this, TruthTable.class);
-    	EditText editText = (EditText)findViewById(R.id.textExpression);
+    	
+    	Expressions expressions = new Expressions();
     	
     	editText.setText("");
 		
     	ArrayList<String> temp = new ArrayList<String>(); 
     	
-    	temp = parse(expression);
+    	temp = expressions.parse(expression);
     	
     	intent.putExtra("expression", temp);
     	
-    	startActivity(intent);
-    	
-    	for (String term : temp)
-    	{
-    		editText.append(term);
-    	}
-    }
-   
-    public ArrayList<String> parse(ArrayList<String> input)
-    {
-    	for (int i = 0; i < input.size(); i++)
-    	{
-    		if (input.get(i) == "AND ")
-    		{
-    			input.set(i, "&&");
-    		}
-    		else if (input.get(i) == "OR ")
-    		{
-    			input.set(i, "||");
-    		}
-    		else if (input.get(i) == "XOR ")
-    		{
-    			input.set(i, "!=");
-    		}
-    		else if (input.get(i) == "NAND ")
-    		{
-    			input.set(i, "||");
-    			input.set(i + 1, "!" + input.get(i + 1));
-    			input.set(i - 1, "!" + input.get(i - 1));
-    		}
-    		else if (input.get(i) == "NOR ")
-    		{
-    			input.set(i, "&&");
-    			input.set(i + 1, "!" + input.get(i + 1));
-    			input.set(i - 1, "!" + input.get(i - 1));
-    		}
-    		else if (input.get(i) == "XNOR ")
-    		{
-    			input.set(i, "==");
-    		}
-    		else if (input.get(i) == "A ")
-    		{
-    			input.set(i, "A");
-    		}
-    		else if (input.get(i) == "B ")
-    		{
-    			input.set(i, "B");
-    		}
-    		else if (input.get(i) == "C ")
-    		{
-    			input.set(i, "C");
-    		}
-    		else if (input.get(i) == "D ")
-    		{
-    			input.set(i, "D");
-    		}
-    		else if (input.get(i) == "A' ")
-    		{
-    			input.set(i, "!A");
-    		}
-    		else if (input.get(i) == "B' ")
-    		{
-    			input.set(i, "!B");
-    		}
-    		else if (input.get(i) == "C' ")
-    		{
-    			input.set(i, "!C");
-    		}
-    		else if (input.get(i) == "D' ")
-    		{
-    			input.set(i, "!D");
-    		}
-    		else if (input.get(i) == ") ")
-    		{
-    			input.set(i, ")");
-    		}
-    	}
-    	
-		return input;
+    	startActivity(intent);    	
     }
     
     @Override

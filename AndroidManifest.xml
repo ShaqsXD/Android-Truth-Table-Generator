@@ -26,7 +26,8 @@
         <activity
             android:name="com.muntashir.truthtablegenerator.TruthTable"
             android:label="@string/title_activity_truth_table"
-            android:parentActivityName="com.muntashir.truthtablegenerator.MainActivity" >
+            android:parentActivityName="com.muntashir.truthtablegenerator.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.muntashir.truthtablegenerator.MainActivity" />

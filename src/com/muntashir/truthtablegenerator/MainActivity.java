@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
         
         buttons = new Buttons(this);
         editText = (EditText)findViewById(R.id.textExpression);
+        expression = new ArrayList<String>();
     }
     
     public void variablePress()

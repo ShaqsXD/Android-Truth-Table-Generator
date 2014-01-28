@@ -19,19 +19,19 @@ public class Expressions {
     	
     	for (String term : input)
     	{
-    		if (term.equals("A") || term.equals("!A") || term.equals("!!A"))
+    		if (term.equals("A") || term.equals("!A") || term.equals("!A' "))
     		{
     			varA = true;
     		}
-    		else if (term.equals("B") || term.equals("!B") || term.equals("!!A"))
+    		else if (term.equals("B") || term.equals("!B") || term.equals("!B' "))
     		{
     			varB = true;
     		}
-    		else if (term.equals("C") || term.equals("!C") || term.equals("!!A"))
+    		else if (term.equals("C") || term.equals("!C") || term.equals("!C' "))
     		{
     			varC = true;
     		}
-    		else if (term.equals("D") || term.equals("!D") || term.equals("!!A"))
+    		else if (term.equals("D") || term.equals("!D") || term.equals("!D' "))
     		{
     			varD = true;
     		}

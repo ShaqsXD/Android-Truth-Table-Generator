@@ -15,6 +15,14 @@ import android.widget.EditText;
 
 public class TruthTable extends Activity {
 
+	protected String boolExpression = "";
+	protected boolean firstVarVal = false;
+	protected boolean secondVarVal = false;
+	protected boolean thirdVarVal = false;
+	protected boolean fourthVarVal = false;
+	protected ArrayList<String> expression;
+	protected Expressions expressions = new Expressions();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,21 +31,12 @@ public class TruthTable extends Activity {
 		setupActionBar();
 		
 		Intent intent = getIntent();
-		Expressions expressions = new Expressions();
-		ArrayList<String> expression = intent.getStringArrayListExtra("expression");
+
+		expression = intent.getStringArrayListExtra("expression");
 		
 		expressions.getVar(expression);
 		
 		EditText editText = (EditText)findViewById(R.id.editText1);
-		
-		String boolExpression = "";
-		
-
-    	
-		boolean firstVarVal = false;
-		boolean secondVarVal = false;
-		boolean thirdVarVal = false;
-		boolean fourthVarVal = false;
 		
 		for (int i = 0; i < Math.pow(2, expressions.numVar); i++)
 		{
@@ -54,47 +53,10 @@ public class TruthTable extends Activity {
 				}
 			}
 			
-	    	for (String term : expression)
-	    	{
-	    		if (term.equals(expressions.firstVar) || term.equals("!!" + expressions.firstVar))
-	    		{
-	    			boolExpression += firstVarVal;
-	    		}
-	    		else if (term.equals(expressions.secondVar) || term.equals("!!" + expressions.secondVar))
-	    		{
-	    			boolExpression += secondVarVal;
-	    		}
-	    		else if (term.equals(expressions.thirdVar) || term.equals("!!" + expressions.thirdVar))
-	    		{
-		    		boolExpression += thirdVarVal;
-		    	}
-	    		else if (term.equals(expressions.fourthVar) || term.equals("!!" + expressions.fourthVar))
-	    	    {
-	    	    	boolExpression += fourthVarVal;
-	    	    }
-	    		else if (term.equals("!" + expressions.firstVar))
-	    		{
-	    			boolExpression += !firstVarVal;
-	    		}
-	    		else if (term.equals("!" + expressions.secondVar))
-	    		{
-	    			boolExpression += !secondVarVal;
-	    		}
-	    		else if (term.equals("!" + expressions.thirdVar))
-	    		{
-		    		boolExpression += !thirdVarVal;
-		    	}
-	    		else if (term.equals("!" + expressions.fourthVar))
-	    	    {
-	    	    	boolExpression += !fourthVarVal;
-	    	    }
-	    		else
-	    		{
-	    		boolExpression += term;
-	    		};
-	    	}
-	    	
-	    		    				
+			insertVal();	    	
+			
+			editText.append(boolExpression + "\n");		
+			
 	    	Evaluator evaluator = new Evaluator();
 	    	
 	    	boolean result = false;
@@ -104,15 +66,12 @@ public class TruthTable extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			editText.append(boolExpression + "\n");	
+
 	        editText.append(firstVarVal + " + " + secondVarVal + " => " + result + "\n");	
 	        
 	        boolExpression = "";
-		}
-		
-		
+		}	
 	}
-
 	/**
 	 * Set up the {@link android.app.ActionBar}.
 	 */
@@ -120,6 +79,49 @@ public class TruthTable extends Activity {
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
+	}
+	
+	protected void insertVal()
+	{
+    	for (String term : expression)
+    	{
+    		if (term.equals(expressions.firstVar) || term.equals("!" + expressions.firstVar + "' "))
+    		{
+    			boolExpression += firstVarVal;
+    		}
+    		else if (term.equals(expressions.secondVar) || term.equals("!" + expressions.secondVar + "' "))
+    		{
+    			boolExpression += secondVarVal;
+    		}
+    		else if (term.equals(expressions.thirdVar) || term.equals("!" + expressions.thirdVar + "' "))
+    		{
+	    		boolExpression += thirdVarVal;
+	    	}
+    		else if (term.equals(expressions.fourthVar) || term.equals("!" + expressions.fourthVar + "' "))
+    	    {
+    	    	boolExpression += fourthVarVal;
+    	    }
+    		else if (term.equals("!" + expressions.firstVar))
+    		{
+    			boolExpression += !firstVarVal;
+    		}
+    		else if (term.equals("!" + expressions.secondVar))
+    		{
+    			boolExpression += !secondVarVal;
+    		}
+    		else if (term.equals("!" + expressions.thirdVar))
+    		{
+	    		boolExpression += !thirdVarVal;
+	    	}
+    		else if (term.equals("!" + expressions.fourthVar))
+    	    {
+    	    	boolExpression += !fourthVarVal;
+    	    }
+    		else
+    		{
+    		boolExpression += term;
+    		}
+    	}
 	}
 
 	@Override

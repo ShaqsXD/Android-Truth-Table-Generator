@@ -8,10 +8,10 @@ public class Expressions {
 	public boolean varB = false;
 	public boolean varC = false;
 	public boolean varD = false;
-	public String firstVar = null;
-	public String secondVar = null;
-	public String thirdVar = null;
-	public String fourthVar = null;
+	public String firstVar = "";
+	public String secondVar = "";
+	public String thirdVar = "";
+	public String fourthVar = "";
 	public int numVar = 0;
 	
     public void getVar(ArrayList<String> input)
@@ -19,19 +19,19 @@ public class Expressions {
     	
     	for (String term : input)
     	{
-    		if (term.equals("A") || term.equals("!A") || term.equals("!A' "))
+    		if (term.equals("A") || term.equals("!A") || term.equals("!A' ") || term.equals("!!A"))
     		{
     			varA = true;
     		}
-    		else if (term.equals("B") || term.equals("!B") || term.equals("!B' "))
+    		else if (term.equals("B") || term.equals("!B") || term.equals("!B' ") || term.equals("!!B"))
     		{
     			varB = true;
     		}
-    		else if (term.equals("C") || term.equals("!C") || term.equals("!C' "))
+    		else if (term.equals("C") || term.equals("!C") || term.equals("!C' ") || term.equals("!!C"))
     		{
     			varC = true;
     		}
-    		else if (term.equals("D") || term.equals("!D") || term.equals("!D' "))
+    		else if (term.equals("D") || term.equals("!D") || term.equals("!D' ") || term.equals("!!D"))
     		{
     			varD = true;
     		}
@@ -160,4 +160,11 @@ public class Expressions {
 		return input;
     }
     
+    public int boolToBin(boolean input)
+    {
+    	if (input == true)
+    		return 1;
+    	else
+    		return 0;
+    }
 }

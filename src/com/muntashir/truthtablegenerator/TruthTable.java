@@ -16,10 +16,10 @@ import android.widget.EditText;
 public class TruthTable extends Activity {
 
 	protected String boolExpression = "";
-	protected boolean firstVarVal = false;
-	protected boolean secondVarVal = false;
-	protected boolean thirdVarVal = false;
-	protected boolean fourthVarVal = false;
+	protected boolean varAVal = false;
+	protected boolean varBVal = false;
+	protected boolean varCVal = false;
+	protected boolean varDVal = false;
 	protected ArrayList<String> expression;
 	protected Expressions expressions = new Expressions();
 	
@@ -30,41 +30,45 @@ public class TruthTable extends Activity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 		
+		EditText editText = (EditText)findViewById(R.id.editText1);
 		Intent intent = getIntent();
 
-		expression = intent.getStringArrayListExtra("expression");
+		expression  = intent.getStringArrayListExtra("expression");
 		
-		expressions.getVar(expression);
+    	for (String term : expression)
+    	{
+    		editText.append(term);
+    	}
 		
-		EditText editText = (EditText)findViewById(R.id.editText1);
-		
-        editText.append(expressions.fourthVar + "|" + expressions.thirdVar + "|" +
-        		expressions.secondVar + "|" + expressions.firstVar + "\n");	
+    	editText.append("\n");
+    	
+    	expression = expressions.parse(expression);
+		expressions.getVarNum(expression);
+    	
+        editText.append("D|C|B|A\n");	
         
 		for (int i = 0; i < Math.pow(2, expressions.numVar); i++)
 		{
 			if ((i + 1) % 2 == 0)
-				firstVarVal = true;
+				varAVal = true;
 			else
 			{
-				firstVarVal = false;
+				varAVal = false;
 				if (i > 0)
-					secondVarVal = !secondVarVal;
+					varBVal = !varBVal;
 			}
 			
 			if ((i >= 4 && i <= 7) || (i >= 12 && i<= 15))
-				thirdVarVal = true;
+				varCVal = true;
 			else
-				thirdVarVal = false;
+				varCVal = false;
 			
 			if (i >= 8 && i<= 15)
-				fourthVarVal = true;
+				varDVal = true;
 			else
-				fourthVarVal = false;
+				varDVal = false;
 			
-			insertVal();	    	
-			
-			//editText.append(boolExpression + "\n");		
+			insertVal();	    		
 			
 	    	Evaluator evaluator = new Evaluator();
 	    	
@@ -76,8 +80,8 @@ public class TruthTable extends Activity {
 				e.printStackTrace();
 			}
 	        
-	        editText.append(expressions.boolToBin(fourthVarVal) + "|" + expressions.boolToBin(thirdVarVal) + "|" +
-	        		expressions.boolToBin(secondVarVal) + "|" + expressions.boolToBin(firstVarVal) + 
+	        editText.append(expressions.boolToBin(varDVal) + "|" + expressions.boolToBin(varCVal) + "|" +
+	        		expressions.boolToBin(varBVal) + "|" + expressions.boolToBin(varAVal) + 
 	        		" => " + expressions.boolToBin(result) + "\n");	
 	        
 	        boolExpression = "";
@@ -90,46 +94,28 @@ public class TruthTable extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
-	protected void insertVal()
-	{
+	protected void insertVal() {
+		
     	for (String term : expression)
     	{
-    		if (term.equals(expressions.firstVar) || term.equals("!" + expressions.firstVar + "' ") || term.trim().equals("!!" + expressions.firstVar))
-    		{
-    			boolExpression += expressions.boolToBin(firstVarVal);
-    		}
-    		else if (term.equals(expressions.secondVar) || term.equals("!" + expressions.secondVar + "' ") || term.trim().equals("!!" + expressions.secondVar))
-    		{
-    			boolExpression += expressions.boolToBin(secondVarVal);
-    		}
-    		else if (term.equals(expressions.thirdVar) || term.equals("!" + expressions.thirdVar + "' ") || term.trim().equals("!!" + expressions.thirdVar))
-    		{
-	    		boolExpression += expressions.boolToBin(thirdVarVal);
-	    	}
-    		else if (term.equals(expressions.fourthVar) || term.equals("!" + expressions.fourthVar + "' ") || term.trim().equals("!!" + expressions.fourthVar))
-    	    {
-    	    	boolExpression += expressions.boolToBin(fourthVarVal);
-    	    }
-    		else if (term.equals("!" + expressions.firstVar))
-    		{
-    			boolExpression += expressions.boolToBin(!firstVarVal);
-    		}
-    		else if (term.equals("!" + expressions.secondVar))
-    		{
-    			boolExpression += expressions.boolToBin(!secondVarVal);
-    		}
-    		else if (term.equals("!" + expressions.thirdVar))
-    		{
-	    		boolExpression += expressions.boolToBin(!thirdVarVal);
-	    	}
-    		else if (term.equals("!" + expressions.fourthVar))
-    	    {
-    	    	boolExpression += expressions.boolToBin(!fourthVarVal);
-    	    }
+    		if (term.equals("A") || term.equals("!!A"))
+    			boolExpression += expressions.boolToBin(varAVal);
+    		else if (term.equals("B") || term.equals("!!B"))
+    			boolExpression += expressions.boolToBin(varBVal);
+    		else if (term.equals("C") || term.equals("!!C"))
+	    		boolExpression += expressions.boolToBin(varCVal);
+    		else if (term.equals("D") || term.equals("!!D"))
+    	    	boolExpression += expressions.boolToBin(varDVal);
+    		else if (term.equals("!A"))
+    			boolExpression += expressions.boolToBin(!varAVal);
+    		else if (term.equals("!B"))
+    			boolExpression += expressions.boolToBin(!varBVal);
+    		else if (term.equals("!C"))
+	    		boolExpression += expressions.boolToBin(!varCVal);
+    		else if (term.equals("!D"))
+    	    	boolExpression += expressions.boolToBin(!varDVal);
     		else
-    		{
-    		boolExpression += term;
-    		}
+    			boolExpression += term;
     	}
 	}
 
@@ -156,5 +142,4 @@ public class TruthTable extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
 }

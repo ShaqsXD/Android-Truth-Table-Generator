@@ -30,9 +30,13 @@ public class MainActivity extends Activity {
         expression = new ArrayList<String>();
     }
     
-    public void variablePress()
-    {
+    protected void onResume() {
+    	super.onResume();
     	
+        writeExpressionToText();
+    }
+    
+    public void variablePress() {
     	buttons.enableOperators();
     	buttons.disableVariables();
     	buttons.enableEnter();
@@ -40,15 +44,10 @@ public class MainActivity extends Activity {
     	buttons.disableLBracket();
     	
     	if (emptyBracket > 0)
-    	{
     		buttons.enableRBracket();
-    	}
     }
     
-    public void operatorPress()
-    {
-    	
-
+    public void operatorPress() {
     	buttons.enableLBracket();
     	buttons.disableOperators();
     	buttons.enableVariables();
@@ -56,10 +55,7 @@ public class MainActivity extends Activity {
     	buttons.disableRBracket();
     }
     
-    public void writeExpressionToText()
-    {
-    	
-    	
+    public void writeExpressionToText() {	
     	editText.setText("");
 		
     	for (String term : expression)
@@ -68,9 +64,7 @@ public class MainActivity extends Activity {
     	}
     }
     
-    public void buttonBksp(View view)
-    {    	
-    	
+    public void buttonBksp(View view) {    	
     	//String term = expression.get(expression.size() - 1);  	
     	
     	buttons.enableOperators();
@@ -79,15 +73,12 @@ public class MainActivity extends Activity {
     	buttons.enableRBracket();
     	
     	if(!expression.isEmpty())
-    	{
     		expression.remove(expression.size() - 1);
-    	}
     	
     	writeExpressionToText();
     }
     
-    public void buttonA(View view)
-    {    	
+    public void buttonA(View view) {    	
     	expression.add("A ");
     	
     	writeExpressionToText();
@@ -95,8 +86,7 @@ public class MainActivity extends Activity {
     	variablePress();
     }
     
-    public void buttonB(View view)
-    {
+    public void buttonB(View view) {
     	expression.add("B ");
     	
     	writeExpressionToText();
@@ -104,8 +94,7 @@ public class MainActivity extends Activity {
     	variablePress();
     }
     
-    public void buttonC(View view)
-    {
+    public void buttonC(View view) {
     	expression.add("C ");
     	
     	writeExpressionToText();
@@ -113,8 +102,7 @@ public class MainActivity extends Activity {
     	variablePress();
     }
     
-    public void buttonD(View view)
-    {
+    public void buttonD(View view) {
     	expression.add("D ");
     	
     	writeExpressionToText();
@@ -122,8 +110,7 @@ public class MainActivity extends Activity {
     	variablePress();
     }
     
-    public void buttonANot(View view)
-    {
+    public void buttonANot(View view) {
     	expression.add("A' ");
     	
     	writeExpressionToText();
@@ -131,8 +118,7 @@ public class MainActivity extends Activity {
     	variablePress();
     }
     
-    public void buttonBNot(View view)
-    {
+    public void buttonBNot(View view) {
     	expression.add("B' ");
     	
     	writeExpressionToText();
@@ -140,8 +126,7 @@ public class MainActivity extends Activity {
     	variablePress();
     }
     
-    public void buttonCNot(View view)
-    {
+    public void buttonCNot(View view) {
     	expression.add("C' ");
     	
     	writeExpressionToText();
@@ -149,8 +134,7 @@ public class MainActivity extends Activity {
     	variablePress();
     }
     
-    public void buttonDNot(View view)
-    {
+    public void buttonDNot(View view) {
     	expression.add("D' ");
     	
     	writeExpressionToText();
@@ -158,8 +142,7 @@ public class MainActivity extends Activity {
     	variablePress();
     }
     
-    public void buttonAnd(View view)
-    {
+    public void buttonAnd(View view) {
     	expression.add("AND ");
     	
     	writeExpressionToText();
@@ -167,8 +150,7 @@ public class MainActivity extends Activity {
     	operatorPress();
     }
     
-    public void buttonOr(View view)
-    {
+    public void buttonOr(View view) {
     	expression.add("OR ");
     	
     	writeExpressionToText();
@@ -176,8 +158,7 @@ public class MainActivity extends Activity {
     	operatorPress();
     }
     
-    public void buttonXor(View view)
-    {
+    public void buttonXor(View view) {
     	expression.add("XOR ");
     	
     	writeExpressionToText();
@@ -185,8 +166,7 @@ public class MainActivity extends Activity {
     	operatorPress();
     }
     
-    public void buttonNand(View view)
-    {
+    public void buttonNand(View view) {
     	expression.add("NAND ");
     	
     	writeExpressionToText();
@@ -194,8 +174,7 @@ public class MainActivity extends Activity {
     	operatorPress();
     }
     
-    public void buttonNor(View view)
-    {
+    public void buttonNor(View view) {
     	expression.add("NOR ");
     	
     	writeExpressionToText();
@@ -203,8 +182,7 @@ public class MainActivity extends Activity {
     	operatorPress();
     }
     
-    public void buttonXnor(View view)
-    {
+    public void buttonXnor(View view) {
     	expression.add("XNOR ");
     	
     	writeExpressionToText();
@@ -212,28 +190,22 @@ public class MainActivity extends Activity {
     	operatorPress();
     }
     
-    public void buttonLBracket(View view)
-    {
+    public void buttonLBracket(View view) {
     	expression.add("(");
     	
     	writeExpressionToText();    	
-    	
-    	
-    	
+
     	emptyBracket++;
     	
     	buttons.disableLBracket();
     	buttons.disableEnter();
     }
     
-    public void buttonRBracket(View view)
-    {
+    public void buttonRBracket(View view) {
     	expression.add(") ");
     	
     	writeExpressionToText();
-    	
-    	
-    	
+
     	if (buttons.variablesDisabled)
     	{
         	buttons.enableLBracket();
@@ -246,19 +218,12 @@ public class MainActivity extends Activity {
     		buttons.enableEnter();
     }
 
-    public void buttonEnter(View view)
-    {	
+    public void buttonEnter(View view) {	
     	Intent intent = new Intent(this, TruthTable.class);
     	
-    	Expressions expressions = new Expressions();
-    	
     	editText.setText("");
-		
-    	ArrayList<String> temp = new ArrayList<String>(); 
     	
-    	temp = expressions.parse(expression);
-    	
-    	intent.putExtra("expression", temp);
+    	intent.putExtra("expression", expression);
     	
     	startActivity(intent);    	
     }

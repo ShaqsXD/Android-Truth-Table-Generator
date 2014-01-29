@@ -7,7 +7,8 @@ import android.widget.Button;
 public class Buttons {
 	
 	public boolean variablesDisabled = false;
-	Activity activity = new Activity();
+	
+	protected Activity activity = new Activity();
 	
 	protected Button AND;
 	protected Button OR;
@@ -50,20 +51,17 @@ public class Buttons {
 		RBracket = (Button)this.activity.findViewById(R.id.buttonRBracket);
 	}
 	
-	protected void enableButton(Button button)
-	{
+	protected void enableButton(Button button) {
 		button.setClickable(true);
 		button.setTextColor(Color.WHITE);
 	}
 	
-	protected void disableButton(Button button)
-	{
+	protected void disableButton(Button button) {
 		button.setClickable(false);
 		button.setTextColor(Color.parseColor("#696969"));
 	}
 	
-	public void enableOperators()
-	    {
+	public void enableOperators() {
 	    	enableButton(AND);
 	    	enableButton(OR);
 	    	enableButton(XOR);
@@ -72,8 +70,7 @@ public class Buttons {
 	    	enableButton(XNOR);
 	    }
 	    
-	    public void disableOperators()
-	    {
+	    public void disableOperators() {
 	    	disableButton(AND);
 	    	disableButton(OR);
 	    	disableButton(XOR);
@@ -82,8 +79,7 @@ public class Buttons {
 	    	disableButton(XNOR);
 	    }
 	    
-	    public void disableVariables()
-	    {
+	    public void disableVariables() {
 	    	disableButton(A);
 	    	disableButton(B);
 	    	disableButton(C);
@@ -96,8 +92,7 @@ public class Buttons {
 	    	variablesDisabled = true;
 	    }
 	    
-	    public void enableVariables()
-	    {   	
+	    public void enableVariables() {   	
 	    	enableButton(A);
 	    	enableButton(B);
 	    	enableButton(C);
@@ -110,33 +105,27 @@ public class Buttons {
 	    	variablesDisabled = false;
 	    }
 	    
-	    public void enableEnter()
-	    {	    	
+	    public void enableEnter() {	    	
 	    	enableButton(Enter);
 	    }
 	    
-	    public void disableEnter()
-	    {
+	    public void disableEnter() {
 	    	disableButton(Enter);
 	    }
 	    
-	    public void disableLBracket()
-	    {
+	    public void disableLBracket() {
 	    	disableButton(LBracket);
 	    }
 	    
-	    public void enableLBracket()
-	    {
+	    public void enableLBracket() {
 	    	enableButton(LBracket);
 	    }
 	    
-	    public void disableRBracket()
-	    {  	
+	    public void disableRBracket() {  	
 	    	disableButton(RBracket);
 	    }
 	    
-	    public void enableRBracket()
-	    {
+	    public void enableRBracket() {
 	    	enableButton(RBracket);
 	    }
 }

@@ -31,7 +31,7 @@ public class Expressions {
     		{
     			varC = true;
     		}
-    		else if (term.equals("D") || term.equals("!D") || term.equals("!D' ") || term.equals("!!D"))
+    		else if (term.equals("D") || term.equals("!D") || term.equals("!D' ") || term.trim().equals("!!D"))
     		{
     			varD = true;
     		}

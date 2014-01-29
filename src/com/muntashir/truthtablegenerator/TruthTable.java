@@ -94,19 +94,19 @@ public class TruthTable extends Activity {
 	{
     	for (String term : expression)
     	{
-    		if (term.equals(expressions.firstVar) || term.equals("!" + expressions.firstVar + "' ") || term.equals("!!" + expressions.firstVar))
+    		if (term.equals(expressions.firstVar) || term.equals("!" + expressions.firstVar + "' ") || term.trim().equals("!!" + expressions.firstVar))
     		{
     			boolExpression += expressions.boolToBin(firstVarVal);
     		}
-    		else if (term.equals(expressions.secondVar) || term.equals("!" + expressions.secondVar + "' ") || term.equals("!!" + expressions.secondVar))
+    		else if (term.equals(expressions.secondVar) || term.equals("!" + expressions.secondVar + "' ") || term.trim().equals("!!" + expressions.secondVar))
     		{
     			boolExpression += expressions.boolToBin(secondVarVal);
     		}
-    		else if (term.equals(expressions.thirdVar) || term.equals("!" + expressions.thirdVar + "' ") || term.equals("!!" + expressions.thirdVar))
+    		else if (term.equals(expressions.thirdVar) || term.equals("!" + expressions.thirdVar + "' ") || term.trim().equals("!!" + expressions.thirdVar))
     		{
 	    		boolExpression += expressions.boolToBin(thirdVarVal);
 	    	}
-    		else if (term.equals(expressions.fourthVar) || term.equals("!" + expressions.fourthVar + "' ") || term.equals("!!" + expressions.fourthVar))
+    		else if (term.equals(expressions.fourthVar) || term.equals("!" + expressions.fourthVar + "' ") || term.trim().equals("!!" + expressions.fourthVar))
     	    {
     	    	boolExpression += expressions.boolToBin(fourthVarVal);
     	    }

@@ -13,9 +13,12 @@ public class MainActivity extends Activity {
 	
 	protected Buttons buttons;
 	
+	//Checks whether brackets are properly closed
 	protected int emptyBracket = 0;
+	//Checks if a variable has been already entered into expression
 	protected boolean variableEntered = false;
 	
+	//Stores the entered expression
 	ArrayList<String> expression = new ArrayList<String>();
 	
 	EditText editText;

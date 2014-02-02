@@ -4,13 +4,16 @@ import java.util.ArrayList;
 
 public class Expressions {
 
+	//Flags to store if variable is used
 	public boolean varA = false;
 	public boolean varB = false;
 	public boolean varC = false;
+	//Most significant bit
 	public boolean varD = false;
 	
 	public int numVar = 0;
 	
+	//Gets most significant bit used
     public void getVarNum(ArrayList<String> input) {  	    	
     	for (String term : input)
     	{
@@ -35,8 +38,8 @@ public class Expressions {
 		
     }
 
+    //Parses entered expression into a boolean expression that can be evaluated
     public ArrayList<String> parse(ArrayList<String> input) {
-    	
     	for (int i = 0; i < input.size(); i++)
     		{
     			input.set(i, input.get(i).trim());
@@ -47,12 +50,14 @@ public class Expressions {
     				input.set(i, "||");
     			else if (input.get(i).equals("XOR"))
     				input.set(i, "!=");
+    			//DeMorgan's Theorem
     			else if (input.get(i).equals("NAND"))
     			{
     				input.set(i, "||");
     				input.set(i + 1, "!" + input.get(i + 1));
     				input.set(i - 1, "!" + input.get(i - 1));
     			}
+    			//DeMorgan's Theorem
     			else if (input.get(i).equals("NOR"))
     			{
     				input.set(i, "&&");
@@ -82,6 +87,7 @@ public class Expressions {
     	return input;	
 	}
     
+    //Converts boolean value to binary
 	public int boolToBin(boolean input) {
     	if (input == true)
     		return 1;

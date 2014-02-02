@@ -15,11 +15,16 @@ import android.widget.EditText;
 
 public class TruthTable extends Activity {
 
+	//Stores boolean expression to be evaluated
 	protected String boolExpression = "";
+	
+	//Stores values of bits
 	protected boolean varAVal = false;
 	protected boolean varBVal = false;
 	protected boolean varCVal = false;
+	//Most significant bit
 	protected boolean varDVal = false;
+	
 	protected ArrayList<String> expression;
 	protected Expressions expressions = new Expressions();
 	
@@ -33,6 +38,11 @@ public class TruthTable extends Activity {
 		EditText editText = (EditText)findViewById(R.id.editText1);
 		Intent intent = getIntent();
 
+		//Stores boolean result of expression
+    	boolean result = false;
+    	//JEval Evaluator to evaluate boolean expression
+    	Evaluator evaluator = new Evaluator();
+    	
 		expression  = intent.getStringArrayListExtra("expression");
 		
     	for (String term : expression)
@@ -47,32 +57,26 @@ public class TruthTable extends Activity {
     	
         editText.append("D|C|B|A\n");	
         
+        //Count up to most significant bit used
 		for (int i = 0; i < Math.pow(2, expressions.numVar); i++)
 		{
-			if ((i + 1) % 2 == 0)
-				varAVal = true;
-			else
+			//Binary counter
+			if (i > 0)
 			{
-				varAVal = false;
-				if (i > 0)
+				varAVal = !varAVal;
+				
+				if (i % 2 == 0)
 					varBVal = !varBVal;
+				
+				if (i % 4 == 0)
+					varCVal = !varCVal;
+			
+				if (i % 8 == 0)
+					varDVal = !varDVal;
 			}
 			
-			if ((i >= 4 && i <= 7) || (i >= 12 && i<= 15))
-				varCVal = true;
-			else
-				varCVal = false;
-			
-			if (i >= 8 && i<= 15)
-				varDVal = true;
-			else
-				varDVal = false;
-			
+			//Inserts values from counter into expression
 			insertVal();	    		
-			
-	    	Evaluator evaluator = new Evaluator();
-	    	
-	    	boolean result = true;
 	    	
 			try {
 				result = evaluator.getBooleanResult(evaluator.evaluate(boolExpression));
@@ -94,8 +98,8 @@ public class TruthTable extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
+	//Inserts values into expression
 	protected void insertVal() {
-		
     	for (String term : expression)
     	{
     		if (term.equals("A") || term.equals("!!A"))

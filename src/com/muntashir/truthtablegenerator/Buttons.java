@@ -6,10 +6,12 @@ import android.widget.Button;
 
 public class Buttons {
 	
+	//Stores whether variable buttons are enabled
 	public boolean variablesDisabled = false;
 	
 	protected Activity activity = new Activity();
 	
+	//Declare buttons
 	protected Button AND;
 	protected Button OR;
 	protected Button XOR;
@@ -28,10 +30,10 @@ public class Buttons {
 	protected Button LBracket;
 	protected Button RBracket;
 	
-	public Buttons(Activity activity)
-	{
+	public Buttons(Activity activity) {
 		this.activity = activity;	
-		
+	
+		//Initialize buttons
 		AND = (Button)this.activity.findViewById(R.id.buttonAnd);
 		OR = (Button)this.activity.findViewById(R.id.buttonOr);
 		XOR = (Button)this.activity.findViewById(R.id.buttonXor);

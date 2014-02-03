@@ -28,8 +28,6 @@ import com.muntashir.truthtablegenerator.jeval.function.FunctionConstants;
 import com.muntashir.truthtablegenerator.jeval.function.FunctionException;
 import com.muntashir.truthtablegenerator.jeval.function.FunctionGroup;
 import com.muntashir.truthtablegenerator.jeval.function.FunctionResult;
-import com.muntashir.truthtablegenerator.jeval.function.math.MathFunctions;
-import com.muntashir.truthtablegenerator.jeval.function.string.StringFunctions;
 import com.muntashir.truthtablegenerator.jeval.operator.AdditionOperator;
 import com.muntashir.truthtablegenerator.jeval.operator.BooleanAndOperator;
 import com.muntashir.truthtablegenerator.jeval.operator.BooleanNotOperator;
@@ -274,7 +272,6 @@ public class Evaluator {
 		// Install the system functions.
 		this.loadMathFunctions = loadMathFunctions;
 		this.loadStringFunctions = loadStringFunctions;
-		loadSystemFunctions();
 
 		// Set the default quote character.
 		setQuoteCharacter(quoteCharacter);
@@ -372,9 +369,6 @@ public class Evaluator {
 	public void clearFunctions() {
 		// Remove all functions.
 		functions.clear();
-
-		// Reload the system functions if necessary.
-		loadSystemFunctions();
 	}
 	
 	/**
@@ -1507,25 +1501,6 @@ public class Evaluator {
 		} else if (name.indexOf(",") > -1) {
 			throw new IllegalArgumentException("A variable or function name "
 					+ "can not contain a special character.");
-		}
-	}
-
-	/**
-	 * This method loads the system functions is necessary.
-	 */
-	private void loadSystemFunctions() {
-		// Install the math functions.
-		if (loadMathFunctions) {
-			final FunctionGroup mathFunctions = new MathFunctions();
-
-			mathFunctions.load(this);
-		}
-
-		// Install the string functions.
-		if (loadStringFunctions) {
-			final FunctionGroup stringFunctions = new StringFunctions();
-
-			stringFunctions.load(this);
 		}
 	}
 
